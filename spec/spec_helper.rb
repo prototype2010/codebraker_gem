@@ -1,6 +1,6 @@
 require 'simplecov'
 SimpleCov.start
-SimpleCov.minimum_coverage 95
+# SimpleCov.minimum_coverage 95
 require 'codebreaker'
 
 RSpec.configure do |config|
