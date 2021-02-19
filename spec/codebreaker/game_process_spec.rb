@@ -67,7 +67,13 @@ RSpec.describe Codebreaker::GameProcess do
     end
 
     it 'serializes correctly' do
-      expect(game_process.to_h).to eq(config.merge(guess_code: []))
+      expect(game_process.to_h).to eq(config.merge({
+                                                     attempts_info: { attempts_left: 2,
+                                                                      attempts_total: 15,
+                                                                      hints: [2, 3],
+                                                                      hints_total: 2 },
+                                                     guess_code: []
+                                                   }))
     end
 
     it 'game can be recovered from hash' do

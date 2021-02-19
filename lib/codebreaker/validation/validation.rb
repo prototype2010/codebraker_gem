@@ -1,16 +1,20 @@
 module Codebreaker
   module Validation
     def validate_name(name)
-      trimmed_name = name.chop.strip
+      trimmed_name = name.chomp.strip
 
       name_validation_rules = Constants::PLAYER_NAME_RULES.fetch(:length)
 
       raise Exceptions::NameValidationError if trimmed_name.length < name_validation_rules.fetch(:min)
       raise Exceptions::NameValidationError if trimmed_name.length > name_validation_rules.fetch(:max)
+
+      name
     end
 
     def validate_difficulty(difficulty)
       raise Exceptions::WrongDifficultyError unless Constants::GAME_DIFFICULTY_CONFIG.key?(difficulty)
+
+      difficulty
     end
 
     def validate_length(guess_array)
@@ -24,6 +28,12 @@ module Codebreaker
       end
 
       raise Exceptions::OutOfComparisonRangeError, symbols_out_of_range unless symbols_out_of_range.empty?
+    end
+
+    def validate_user_code(code)
+      raise Exceptions::DigitsExpectedError unless code.scan(/\D/).empty?
+
+      code
     end
   end
 end

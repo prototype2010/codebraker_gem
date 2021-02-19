@@ -12,6 +12,7 @@ require_relative './exceptions/no_more_attempts_error'
 require_relative './exceptions/no_more_hints_error'
 require_relative './exceptions/name_validation_error'
 require_relative './exceptions/wrong_difficulty_error'
+require_relative './exceptions/digit_expected_error'
 
 require_relative './validation/validation'
 

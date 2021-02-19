@@ -16,7 +16,7 @@ module Codebreaker
       @difficulty = difficulty
       @player_name = player_name
       @attempts_left = attempts_info[:attempts_left] || default_settings.fetch(:attempts)
-      @hints = attempts_info[:hints] || @secret_code.shuffle.slice(0, attempts_info.fetch(:hints))
+      @hints = init_hints(attempts_info[:hints])
       @guess_code = rest_params[:guess_code] || []
     end
 
@@ -26,6 +26,10 @@ module Codebreaker
 
     def lose?
       !win? && @attempts_left.zero?
+    end
+
+    def init_hints(hints_info)
+      hints_info.is_a?(Integer) ? @secret_code.shuffle.slice(0, hints_info) : hints_info
     end
 
     def hints_left
@@ -47,12 +51,16 @@ module Codebreaker
     end
 
     def to_h
+      default_settings = Constants::GAME_DIFFICULTY_CONFIG.fetch(@difficulty)
+
       {
         secret_code: @secret_code,
         guess_code: @guess_code,
         difficulty: @difficulty,
         player_name: @player_name,
         attempts_info: {
+          attempts_total: default_settings[:attempts],
+          hints_total: default_settings[:hints],
           attempts_left: @attempts_left,
           hints: @hints
         }
