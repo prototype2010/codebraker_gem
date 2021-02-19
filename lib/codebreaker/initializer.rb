@@ -1,4 +1,4 @@
-require 'securerandom'
+require 'bundler/setup'
 
 require_relative './constants'
 
