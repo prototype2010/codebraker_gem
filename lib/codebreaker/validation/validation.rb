@@ -9,6 +9,10 @@ module Codebreaker
       raise Exceptions::NameValidationError if trimmed_name.length > name_validation_rules.fetch(:max)
     end
 
+    def validate_difficulty(difficulty)
+      raise Exceptions::WrongDifficultyError unless Constants::GAME_DIFFICULTY_CONFIG.key?(difficulty)
+    end
+
     def validate_length(guess_array)
       raise Exceptions::EmptyArrayError, 'empty array' unless guess_array.length.positive?
       raise Exceptions::UnableToCompareError unless Constants::DIGITS_NUMBER == guess_array.length
