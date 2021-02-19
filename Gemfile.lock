@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    codebreaker_gem (0.1.0)
+    codebreaker (0.1.0)
       rake
 
 GEM
@@ -67,7 +67,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  codebreaker_gem!
+  codebreaker!
   fasterer
   rspec
   rubocop

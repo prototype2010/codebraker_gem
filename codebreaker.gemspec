@@ -1,7 +1,7 @@
 require_relative 'lib/codebreaker/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'codebreaker_gem'
+  spec.name          = 'codebreaker'
   spec.version       = Codebreaker::VERSION
   spec.authors       = ['prototype2010']
   spec.email         = ['alex.zakorko2015@gmail.com']
