@@ -1,4 +1,5 @@
 require 'bundler/setup'
+require 'codebreaker'
 
 require_relative './constants'
 
