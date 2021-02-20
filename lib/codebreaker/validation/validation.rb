@@ -1,7 +1,7 @@
 module Codebreaker
   module Validation
     def validate_name(name)
-      trimmed_name = name.chop.strip
+      trimmed_name = name.chomp.strip
 
       name_validation_rules = Constants::PLAYER_NAME_RULES.fetch(:length)
 
