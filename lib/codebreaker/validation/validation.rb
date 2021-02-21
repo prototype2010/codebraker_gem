@@ -25,5 +25,9 @@ module Codebreaker
 
       raise Exceptions::OutOfComparisonRangeError, symbols_out_of_range unless symbols_out_of_range.empty?
     end
+
+    def validate_user_code(code)
+      raise Exceptions::DigitsExpectedError unless code.scan(/\D/).empty?
+    end
   end
 end
