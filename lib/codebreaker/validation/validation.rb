@@ -7,10 +7,14 @@ module Codebreaker
 
       raise Exceptions::NameValidationError if trimmed_name.length < name_validation_rules.fetch(:min)
       raise Exceptions::NameValidationError if trimmed_name.length > name_validation_rules.fetch(:max)
+
+      name
     end
 
     def validate_difficulty(difficulty)
       raise Exceptions::WrongDifficultyError unless Constants::GAME_DIFFICULTY_CONFIG.key?(difficulty)
+
+      difficulty
     end
 
     def validate_length(guess_array)
@@ -28,6 +32,8 @@ module Codebreaker
 
     def validate_user_code(code)
       raise Exceptions::DigitsExpectedError unless code.scan(/\D/).empty?
+
+      code
     end
   end
 end
